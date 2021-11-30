@@ -3,22 +3,26 @@ import './App.css';
 import ListEmployeeComponent from './components/ListEmployeeComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    
+
     <div>
-         <HeaderComponent/>
-          
-         <div className="container">
-          <ListEmployeeComponent/>
-         </div>
+         <Router>
+               <HeaderComponent />
 
-         <FooterComponent/>
-
+        <div className="container">
+              <Switch>
+                  <Route path="/" component={ListEmployeeComponent}></Route>
+                  <Route path="/employees" component={ListEmployeeComponent}></Route>
+               </Switch>
+        </div>
+        <FooterComponent />
+      </Router>
     </div>
 
-    
+
   );
 }
 
