@@ -20,7 +20,6 @@ function App() {
                   <Route path="/employees" component={ListEmployeeComponent}></Route>
                   <Route path="/add-employee" component={CreateEmployeeComponent}></Route>
                   <Route path="/edit-employee/:id" component={UpdateEmployeeComponent}></Route>
-                  
                </Switch>
         </div>
         <FooterComponent />

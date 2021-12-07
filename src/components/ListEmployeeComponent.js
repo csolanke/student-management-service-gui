@@ -12,6 +12,7 @@ class ListEmployeeComponent extends Component {
 
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
+        this.deleteEmployee = this.deleteEmployee.bind(this);
     };
 
 
@@ -29,6 +30,15 @@ class ListEmployeeComponent extends Component {
     editEmployee(id)
     {
         this.props.history.push(`/edit-employee/${id}`);
+    }
+
+    deleteEmployee(id)
+    {
+        // code to call method from service class to invoke rest api delete method
+        EmployeeService.deleteEmployeeById(id).then(res=>{
+        this.setState({employees : this.state.employees.filter(employee=> employee.id!==id)});
+        })
+        
     }
 
     render() {
@@ -60,6 +70,7 @@ class ListEmployeeComponent extends Component {
                                         <td>{employee.emailId}</td>
                                         <td>
                                             <button onClick ={()=> this.editEmployee(employee.id)} className="btn btn-info">Update</button>
+                                            <button style = {{marginLeft:'10px'}} onClick ={()=> this.deleteEmployee(employee.id)} className="btn btn-danger">Delete</button>
                                         </td>
                                     </tr>
                             )}
